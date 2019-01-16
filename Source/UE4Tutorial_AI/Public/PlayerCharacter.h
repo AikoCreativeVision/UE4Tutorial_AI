@@ -4,16 +4,17 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
+#include "Runtime/AIModule/Classes/GenericTeamAgentInterface.h"
 #include "PlayerCharacter.generated.h"
 
 UCLASS()
-class UE4TUTORIAL_AI_API APlayerCharacter : public ACharacter
+class UE4TUTORIAL_AI_API APlayerCharacter : public ACharacter, public IGenericTeamAgentInterface
 {
 	GENERATED_BODY()
 
 public:
 	// Sets default values for this character's properties
-	APlayerCharacter();
+	APlayerCharacter(const FObjectInitializer& ObjectInitializer);
 
 protected:
 	// Called when the game starts or when spawned
@@ -26,6 +27,10 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
-	
+private:
+	FGenericTeamId TeamId;
+
+	virtual FGenericTeamId GetGenericTeamId() const override;
+
 	
 };

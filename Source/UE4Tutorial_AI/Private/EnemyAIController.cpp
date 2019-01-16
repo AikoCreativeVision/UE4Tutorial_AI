@@ -2,6 +2,10 @@
 
 #include "EnemyAIController.h"
 
-
-
+AEnemyAIController::AEnemyAIController(const FObjectInitializer& ObjectInitializer)
+	: Super(ObjectInitializer)
+{
+	// Assign to Team 1
+	SetGenericTeamId(FGenericTeamId(TeamID));
+}
 

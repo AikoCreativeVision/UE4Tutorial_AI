@@ -4,11 +4,13 @@
 
 
 // Sets default values
-APlayerCharacter::APlayerCharacter()
+APlayerCharacter::APlayerCharacter(const FObjectInitializer& ObjectInitializer)
+	: Super(ObjectInitializer)
 {
  	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
-
+	TeamId = FGenericTeamId(0);
+	SetGenericTeamId(TeamId); //Useless ?
 }
 
 // Called when the game starts or when spawned
@@ -32,3 +34,7 @@ void APlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 
 }
 
+FGenericTeamId APlayerCharacter::GetGenericTeamId() const
+{
+	return TeamId;
+}
