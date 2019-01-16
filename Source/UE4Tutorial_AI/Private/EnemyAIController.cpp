@@ -9,3 +9,9 @@ AEnemyAIController::AEnemyAIController(const FObjectInitializer& ObjectInitializ
 	SetGenericTeamId(FGenericTeamId(TeamID));
 }
 
+// Called when the game starts or when spawned
+void AEnemyAIController::BeginPlay()
+{
+	Super::BeginPlay();
+	SetGenericTeamId(FGenericTeamId(TeamID));
+}
